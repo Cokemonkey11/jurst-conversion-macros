@@ -1,0 +1,33 @@
+﻿endfunction -> end
+endlibrary -> end
+^(\s*)set  -> \1
+^\s+$ -> 
+endglobals -> end
+FoG -> fst
+^(\s*)call  -> \1
+^(\s*)(.*)\.destroy\(\) -> \1destroy \2
+^(\s*)local  -> \1
+([^\s\.\=]*)\.create\(\) -> new \1
+thistype\. -> 
+endscope -> end
+endstruct -> end
+struct  -> class 
+private class -> class
+public static method -> static method
+([a-zA-Z\.]+) ?= ?\1 ?([+-]) ?1$ -> \1\2\2
+endloop$ -> end
+([^\s=<>!])=([^\s=<>!]) -> \1 = \2
+endmethod -> end
+([^\s=<>!])>([^\s=<>!]) -> \1 > \2
+([^\s=<>!])<([^\s=<>!]) -> \1 < \2
+endif$ -> end
+([^\s=<>!]),([^\s=<>!]) -> \1, \2
+([^\s=<>!+])\+([^\s=<>!+]) -> \1 + \2
+ takes nothing returns nothing$ -> ()
+([^\s=<>!])\!\=([^\s=<>!]) -> \1 != \2
+([^\s=<>!])\=\=([^\s=<>!]) -> \1 == \2
+([^\s]*)[ \t]+$ -> \1
+integer -> int
+(?s) initializer ([a-zA-Z]+)($.*)function \1\(\) -> \2init
+(if.*) then$ -> \1
+private init$ -> init

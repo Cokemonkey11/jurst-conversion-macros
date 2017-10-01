@@ -1,4 +1,4 @@
-﻿static if -> if
+static if -> if
 endfunction -> end
 endlibrary -> end
 ^(\s*)set  -> \1
@@ -38,3 +38,7 @@ constant string -> constant
 constant real -> constant
 \.getState\(UNIT_STATE_LIFE\) -> .getHP()
 \.getState\(UNIT_STATE_MAX_LIFE\) -> .getMaxHP()
+
+#
+
+globals
